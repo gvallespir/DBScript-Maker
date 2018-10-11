@@ -6,17 +6,14 @@
 package com.guillermovallespir.dbscriptmaker.Visual;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.LayoutManager;
+import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
@@ -54,6 +51,14 @@ public class Panel extends javax.swing.JFrame {
         jMenuItem28 = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenu10 = new javax.swing.JMenu();
+        jMenuItem32 = new javax.swing.JMenuItem();
+        jMenuItem33 = new javax.swing.JMenuItem();
+        jSeparator11 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem34 = new javax.swing.JMenuItem();
+        jMenuItem35 = new javax.swing.JMenuItem();
+        jMenuItem36 = new javax.swing.JMenuItem();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -128,6 +133,30 @@ public class Panel extends javax.swing.JFrame {
         jMenuItem28.setText("jMenuItem28");
 
         jScrollPane1.setViewportView(jEditorPane1);
+
+        jMenu10.setText("Navegar");
+
+        jMenuItem32.setText("Ir al código");
+        jMenu10.add(jMenuItem32);
+
+        jMenuItem33.setText("Ir a la declaración");
+        jMenu10.add(jMenuItem33);
+
+        jPopupMenu1.add(jMenu10);
+        jPopupMenu1.add(jSeparator11);
+
+        jMenuItem34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-cut-16.png"))); // NOI18N
+        jMenuItem34.setText("Cortar");
+        jMenuItem34.setToolTipText("");
+        jPopupMenu1.add(jMenuItem34);
+
+        jMenuItem35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-copy-16.png"))); // NOI18N
+        jMenuItem35.setText("Copiar");
+        jPopupMenu1.add(jMenuItem35);
+
+        jMenuItem36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-paste-16.png"))); // NOI18N
+        jMenuItem36.setText("Pegar");
+        jPopupMenu1.add(jMenuItem36);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DBScript Maker v1.0");
@@ -223,9 +252,14 @@ public class Panel extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
         );
 
+        jEditorPane2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jEditorPane2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jEditorPane2);
 
         jMenu1.setText("Archivo");
@@ -502,7 +536,7 @@ public class Panel extends javax.swing.JFrame {
         JDialog dialogo = new JDialog();
         WizardPanel panel = new nuevoDocumento_paso1();
         WizardDialog wizardDialog = new WizardDialog(dialogo, true, "Nuevo archivo DBScript XML", panel);
-        wizardDialog.setSize(500, 300);
+        wizardDialog.setSize(700, 350);
         wizardDialog.setVisible(true);
     }
     
@@ -558,6 +592,13 @@ public class Panel extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         openDocument();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jEditorPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEditorPane2MouseClicked
+        if(SwingUtilities.isRightMouseButton(evt)){
+            jPopupMenu1.show(this, evt.getX(), evt.getY() + 60);
+        }
+
+    }//GEN-LAST:event_jEditorPane2MouseClicked
 
     
 
@@ -615,6 +656,7 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JEditorPane jEditorPane2;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -646,6 +688,11 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem30;
     private javax.swing.JMenuItem jMenuItem31;
+    private javax.swing.JMenuItem jMenuItem32;
+    private javax.swing.JMenuItem jMenuItem33;
+    private javax.swing.JMenuItem jMenuItem34;
+    private javax.swing.JMenuItem jMenuItem35;
+    private javax.swing.JMenuItem jMenuItem36;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
@@ -654,10 +701,12 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator10;
+    private javax.swing.JPopupMenu.Separator jSeparator11;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
