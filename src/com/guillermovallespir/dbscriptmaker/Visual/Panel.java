@@ -6,14 +6,24 @@
 package com.guillermovallespir.dbscriptmaker.Visual;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.LayoutManager;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.Document;
+import javax.swing.text.PlainDocument;
 import org.bounce.text.xml.XMLEditorKit;
 import org.bounce.text.xml.XMLStyleConstants;
+import org.jfree.ui.WizardDialog;
+import org.jfree.ui.WizardPanel;
 
 /**
  *
@@ -42,16 +52,24 @@ public class Panel extends javax.swing.JFrame {
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jMenuItem24 = new javax.swing.JMenuItem();
         jMenuItem28 = new javax.swing.JMenuItem();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jSeparator8 = new javax.swing.JToolBar.Separator();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jSeparator9 = new javax.swing.JToolBar.Separator();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jSeparator10 = new javax.swing.JToolBar.Separator();
+        jButton6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jEditorPane2 = new javax.swing.JEditorPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -96,6 +114,9 @@ public class Panel extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         jMenuItem27 = new javax.swing.JMenuItem();
         jMenuItem29 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem30 = new javax.swing.JMenuItem();
+        jMenuItem31 = new javax.swing.JMenuItem();
 
         jMenuItem18.setText("jMenuItem18");
 
@@ -106,8 +127,11 @@ public class Panel extends javax.swing.JFrame {
 
         jMenuItem28.setText("jMenuItem28");
 
+        jScrollPane1.setViewportView(jEditorPane1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DBScript Maker v1.0");
+        setPreferredSize(new java.awt.Dimension(1179, 700));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -118,23 +142,65 @@ public class Panel extends javax.swing.JFrame {
         jToolBar1.setPreferredSize(new java.awt.Dimension(1150, 57));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-new-file-16.png"))); // NOI18N
+        jButton1.setToolTipText("Archivo nuevo... (Ctrl+N)");
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton1);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-open-16.png"))); // NOI18N
+        jButton2.setToolTipText("Abrir archivo... (Crtl+O)");
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton2);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-save-16.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-save-all-16.png"))); // NOI18N
+        jButton3.setToolTipText("Guardar todo (Ctrl+Mayús+G)");
         jButton3.setEnabled(false);
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton3);
+        jToolBar1.add(jSeparator8);
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-undo-16.png"))); // NOI18N
+        jButton4.setToolTipText("Deshacer (Ctrl+Z)");
+        jButton4.setFocusable(false);
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton4);
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-redo-16.png"))); // NOI18N
+        jButton5.setToolTipText("Rehacer (Ctrl+Y)");
+        jButton5.setFocusable(false);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton5);
+        jToolBar1.add(jSeparator9);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<default_config>", "Personalizar..." }));
+        jComboBox1.setMaximumSize(new java.awt.Dimension(200, 100));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(56, 10));
+        jToolBar1.add(jComboBox1);
+        jToolBar1.add(jSeparator10);
+
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-next-16.png"))); // NOI18N
+        jButton6.setToolTipText("Ejecutar (F6)");
+        jButton6.setFocusable(false);
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton6);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,19 +217,16 @@ public class Panel extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setViewportView(jEditorPane1);
-
-        jTabbedPane1.addTab("tab1", jScrollPane1);
+        jScrollPane2.setViewportView(jEditorPane2);
 
         jMenu1.setText("Archivo");
 
@@ -204,6 +267,7 @@ public class Panel extends javax.swing.JFrame {
         jMenuItem4.setEnabled(false);
         jMenu1.add(jMenuItem4);
 
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-save-all-16.png"))); // NOI18N
         jMenuItem5.setText("Guardar todo");
         jMenuItem5.setEnabled(false);
@@ -212,6 +276,7 @@ public class Panel extends javax.swing.JFrame {
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem6.setText("Cerrar");
+        jMenuItem6.setEnabled(false);
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -221,6 +286,7 @@ public class Panel extends javax.swing.JFrame {
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItem7.setText("Cerrar todo");
+        jMenuItem7.setEnabled(false);
         jMenu1.add(jMenuItem7);
         jMenu1.add(jSeparator3);
 
@@ -241,11 +307,13 @@ public class Panel extends javax.swing.JFrame {
         jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-undo-16.png"))); // NOI18N
         jMenuItem9.setText("Deshacer");
+        jMenuItem9.setEnabled(false);
         jMenu2.add(jMenuItem9);
 
         jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-redo-16.png"))); // NOI18N
         jMenuItem10.setText("Rehacer");
+        jMenuItem10.setEnabled(false);
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem10ActionPerformed(evt);
@@ -257,16 +325,19 @@ public class Panel extends javax.swing.JFrame {
         jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-cut-16.png"))); // NOI18N
         jMenuItem11.setText("Cortar");
+        jMenuItem11.setEnabled(false);
         jMenu2.add(jMenuItem11);
 
         jMenuItem12.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-copy-16.png"))); // NOI18N
         jMenuItem12.setText("Copiar");
+        jMenuItem12.setEnabled(false);
         jMenu2.add(jMenuItem12);
 
         jMenuItem13.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-paste-16.png"))); // NOI18N
         jMenuItem13.setText("Pegar");
+        jMenuItem13.setEnabled(false);
         jMenu2.add(jMenuItem13);
 
         jMenuItem14.setText("Pegar con formato");
@@ -370,6 +441,19 @@ public class Panel extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
+        jMenu6.setText("Ejecutar");
+
+        jMenuItem30.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        jMenuItem30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-next-16.png"))); // NOI18N
+        jMenuItem30.setText("Ejecutar archivo");
+        jMenu6.add(jMenuItem30);
+
+        jMenuItem31.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem31.setText("Probar archivo");
+        jMenu6.add(jMenuItem31);
+
+        jMenuBar1.add(jMenu6);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -378,8 +462,7 @@ public class Panel extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 973, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -389,13 +472,11 @@ public class Panel extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 743, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane2)))
         );
 
         pack();
@@ -410,18 +491,30 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        
+        newDocument();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        openDocument();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void newDocument(){
+        JDialog dialogo = new JDialog();
+        WizardPanel panel = new nuevoDocumento_paso1();
+        WizardDialog wizardDialog = new WizardDialog(dialogo, true, "Nuevo archivo DBScript XML", panel);
+        wizardDialog.setSize(500, 300);
+        wizardDialog.setVisible(true);
+    }
+    
+    private void openDocument(){
         JFileChooser jFileChooser = new JFileChooser();
         jFileChooser.setDialogTitle("Abrir archivo DBScript XML (.xml)");
         jFileChooser.setAcceptAllFileFilterUsed(false);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo DBScript XML", "xml", "XML");
         jFileChooser.addChoosableFileFilter(filter);
         jFileChooser.showOpenDialog(Panel.this);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
+    }
+    
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem10ActionPerformed
@@ -439,6 +532,7 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem25ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         XMLEditorKit xmlEditorKit = new XMLEditorKit();
@@ -446,14 +540,24 @@ public class Panel extends javax.swing.JFrame {
         xmlEditorKit.setTagCompletion(true);
         xmlEditorKit.setStyle(XMLStyleConstants.ELEMENT_NAME, Color.magenta, NORMAL);
         xmlEditorKit.setStyle( XMLStyleConstants.CDATA, new Color(0, 0, 0), Font.ITALIC);
-       
-        jEditorPane1.setEditorKitForContentType("text/xml", xmlEditorKit);
-        jEditorPane1.setContentType("text/xml");
-        jEditorPane1.setFont( new Font( "Sans Serif", Font.PLAIN, 12));
-        jEditorPane1.setText("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
+
+        jEditorPane2.setEditorKitForContentType("text/xml", xmlEditorKit);
+        jEditorPane2.setContentType("text/xml");
+        Document doc = jEditorPane2.getDocument();
+        doc.putProperty(PlainDocument.tabSizeAttribute, 2);
+        jEditorPane2.setFont( new Font( "Sans Serif", Font.PLAIN, 12));
+        jEditorPane2.setText("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
                 + "<DBSCRIPT id=\"\" author=\"" + System.getProperty("user.name") + "\" date=\"" + sdf.format(calendar.getTime()) + "\" desc=\"Script creado automáticamente con DBScript Maker v1.0\">\n\t<DATABASE id=\"ORACLEDB\" type=\"mysql\" database=\"sd_5_caren\" />\n</DBSCRIPT>");
         
     }//GEN-LAST:event_formWindowActivated
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        newDocument();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        openDocument();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     
 
@@ -487,7 +591,8 @@ public class Panel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Panel().setVisible(true);
+                Panel panel = new Panel();
+                panel.setVisible(true);
             }
         });
     }
@@ -496,6 +601,9 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
@@ -503,12 +611,15 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem6;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem7;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JEditorPane jEditorPane1;
+    private javax.swing.JEditorPane jEditorPane2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -533,6 +644,8 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem28;
     private javax.swing.JMenuItem jMenuItem29;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem30;
+    private javax.swing.JMenuItem jMenuItem31;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
@@ -542,14 +655,17 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator10;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JPopupMenu.Separator jSeparator7;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JToolBar.Separator jSeparator8;
+    private javax.swing.JToolBar.Separator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
