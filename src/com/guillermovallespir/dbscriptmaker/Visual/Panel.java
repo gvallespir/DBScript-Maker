@@ -176,6 +176,11 @@ public class Panel extends javax.swing.JFrame {
         jMenu1.add(jMenuItem3);
 
         jMenuItem4.setText("Guardar como...");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem4);
 
         jMenuItem5.setText("Guardar todo");
@@ -388,7 +393,7 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem20ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        JOptionPane.showMessageDialog(this, "Estás saliendo de DBScript Maker sin guardar tus cambios.\n¿Estás seguro que quieres salir sin guardar?", "¿Estás seguro que quieres salir?", JOptionPane.YES_NO_CANCEL_OPTION);
+        JOptionPane.showMessageDialog(this, "Estás saliendo de DBScript Maker sin guardar tus cambios.\n¿Estás seguro que quieres salir sin guardar?", "¿Estás seguro que quieres salir?", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem25ActionPerformed
@@ -411,6 +416,15 @@ public class Panel extends javax.swing.JFrame {
                 + "<DBSCRIPT id=\"\" author=\"" + System.getProperty("user.name") + "\" date=\"" + sdf.format(calendar.getTime()) + "\" desc=\"Script creado automáticamente con DBScript Maker v1.0\">\n\t<DATABASE id=\"ORACLEDB\" type=\"mysql\" database=\"sd_5_caren\" />\n</DBSCRIPT>");
         
     }//GEN-LAST:event_formWindowActivated
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        JFileChooser jFileChooser = new JFileChooser();
+        jFileChooser.setDialogTitle("Guarda tu archivo DBScript XML (.xml)");
+        jFileChooser.setAcceptAllFileFilterUsed(false);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Guardar DBScript XML", "xml", "XML");
+        jFileChooser.addChoosableFileFilter(filter);
+        jFileChooser.showSaveDialog(Panel.this);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     
 
