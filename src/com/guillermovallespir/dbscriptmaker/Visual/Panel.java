@@ -5,18 +5,31 @@
  */
 package com.guillermovallespir.dbscriptmaker.Visual;
 
+import com.guillermovallespir.dbscriptmaker.Clases.XMLInside;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Font;
-import java.awt.event.MouseEvent;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
+import org.apache.commons.lang3.text.WordUtils;
 import org.bounce.text.xml.XMLEditorKit;
 import org.bounce.text.xml.XMLStyleConstants;
 import org.jfree.ui.WizardDialog;
@@ -28,6 +41,7 @@ import org.jfree.ui.WizardPanel;
  */
 public class Panel extends javax.swing.JFrame {
 
+    private String cortado = "";
     /**
      * Creates new form Panel
      */
@@ -59,6 +73,10 @@ public class Panel extends javax.swing.JFrame {
         jMenuItem34 = new javax.swing.JMenuItem();
         jMenuItem35 = new javax.swing.JMenuItem();
         jMenuItem36 = new javax.swing.JMenuItem();
+        jMenuItem64 = new javax.swing.JMenuItem();
+        jMenu16 = new javax.swing.JMenu();
+        jMenuItem79 = new javax.swing.JMenuItem();
+        jMenuItem83 = new javax.swing.JMenuItem();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -70,6 +88,10 @@ public class Panel extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jSeparator10 = new javax.swing.JToolBar.Separator();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jSeparator17 = new javax.swing.JToolBar.Separator();
+        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -119,9 +141,90 @@ public class Panel extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         jMenuItem27 = new javax.swing.JMenuItem();
         jMenuItem29 = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem42 = new javax.swing.JMenuItem();
+        jMenuItem43 = new javax.swing.JMenuItem();
+        jMenuItem44 = new javax.swing.JMenuItem();
+        jMenuItem45 = new javax.swing.JMenuItem();
+        jSeparator15 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem46 = new javax.swing.JMenuItem();
+        jMenuItem47 = new javax.swing.JMenuItem();
+        jSeparator16 = new javax.swing.JPopupMenu.Separator();
+        jMenu11 = new javax.swing.JMenu();
+        jMenuItem48 = new javax.swing.JMenuItem();
+        jMenuItem49 = new javax.swing.JMenuItem();
+        jMenuItem50 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem30 = new javax.swing.JMenuItem();
         jMenuItem31 = new javax.swing.JMenuItem();
+        jSeparator12 = new javax.swing.JPopupMenu.Separator();
+        jMenu7 = new javax.swing.JMenu();
+        jCheckBoxMenuItem8 = new javax.swing.JCheckBoxMenuItem();
+        jSeparator13 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem37 = new javax.swing.JMenuItem();
+        jMenu8 = new javax.swing.JMenu();
+        jMenuItem38 = new javax.swing.JMenuItem();
+        jSeparator14 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem39 = new javax.swing.JMenuItem();
+        jMenuItem40 = new javax.swing.JMenuItem();
+        jMenuItem41 = new javax.swing.JMenuItem();
+        jMenu12 = new javax.swing.JMenu();
+        jMenuItem51 = new javax.swing.JMenuItem();
+        jMenu13 = new javax.swing.JMenu();
+        jMenuItem52 = new javax.swing.JMenuItem();
+        jMenuItem53 = new javax.swing.JMenuItem();
+        jMenuItem54 = new javax.swing.JMenuItem();
+        jMenuItem55 = new javax.swing.JMenuItem();
+        jMenuItem56 = new javax.swing.JMenuItem();
+        jMenuItem57 = new javax.swing.JMenuItem();
+        jMenu14 = new javax.swing.JMenu();
+        jMenuItem58 = new javax.swing.JMenuItem();
+        jMenuItem59 = new javax.swing.JMenuItem();
+        jMenuItem60 = new javax.swing.JMenuItem();
+        jMenuItem65 = new javax.swing.JMenuItem();
+        jMenuItem66 = new javax.swing.JMenuItem();
+        jMenuItem67 = new javax.swing.JMenuItem();
+        jSeparator18 = new javax.swing.JPopupMenu.Separator();
+        jMenu17 = new javax.swing.JMenu();
+        jMenuItem68 = new javax.swing.JMenuItem();
+        jMenu18 = new javax.swing.JMenu();
+        jMenuItem69 = new javax.swing.JMenuItem();
+        jMenuItem70 = new javax.swing.JMenuItem();
+        jSeparator19 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem71 = new javax.swing.JMenuItem();
+        jSeparator20 = new javax.swing.JPopupMenu.Separator();
+        jMenu19 = new javax.swing.JMenu();
+        jMenuItem72 = new javax.swing.JMenuItem();
+        jMenuItem73 = new javax.swing.JMenuItem();
+        jMenuItem74 = new javax.swing.JMenuItem();
+        jSeparator21 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem75 = new javax.swing.JMenuItem();
+        jMenuItem76 = new javax.swing.JMenuItem();
+        jSeparator22 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem77 = new javax.swing.JMenuItem();
+        jMenuItem78 = new javax.swing.JMenuItem();
+        jMenuItem80 = new javax.swing.JMenuItem();
+        jMenu20 = new javax.swing.JMenu();
+        jMenuItem81 = new javax.swing.JMenuItem();
+        jSeparator23 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem82 = new javax.swing.JMenuItem();
+        jMenuItem84 = new javax.swing.JMenuItem();
+        jMenuItem85 = new javax.swing.JMenuItem();
+        jMenuItem86 = new javax.swing.JMenuItem();
+        jSeparator24 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem87 = new javax.swing.JMenuItem();
+        jMenuItem88 = new javax.swing.JMenuItem();
+        jSeparator25 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem89 = new javax.swing.JMenuItem();
+        jMenuItem90 = new javax.swing.JMenuItem();
+        jSeparator26 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem91 = new javax.swing.JMenuItem();
+        jMenuItem92 = new javax.swing.JMenuItem();
+        jMenu21 = new javax.swing.JMenu();
+        jMenu15 = new javax.swing.JMenu();
+        jMenuItem61 = new javax.swing.JMenuItem();
+        jMenuItem62 = new javax.swing.JMenuItem();
+        jMenuItem63 = new javax.swing.JMenuItem();
 
         jMenuItem18.setText("jMenuItem18");
 
@@ -148,15 +251,38 @@ public class Panel extends javax.swing.JFrame {
         jMenuItem34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-cut-16.png"))); // NOI18N
         jMenuItem34.setText("Cortar");
         jMenuItem34.setToolTipText("");
+        jMenuItem34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem34ActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(jMenuItem34);
 
         jMenuItem35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-copy-16.png"))); // NOI18N
         jMenuItem35.setText("Copiar");
+        jMenuItem35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem35ActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(jMenuItem35);
 
         jMenuItem36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-paste-16.png"))); // NOI18N
         jMenuItem36.setText("Pegar");
+        jMenuItem36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem36ActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(jMenuItem36);
+
+        jMenuItem64.setText("jMenuItem64");
+
+        jMenu16.setText("jMenu16");
+
+        jMenuItem79.setText("jMenuItem79");
+
+        jMenuItem83.setText("jMenuItem83");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DBScript Maker v1.0");
@@ -220,6 +346,7 @@ public class Panel extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<default_config>", "Personalizar..." }));
         jComboBox1.setMaximumSize(new java.awt.Dimension(200, 100));
+        jComboBox1.setMinimumSize(new java.awt.Dimension(100000, 27));
         jComboBox1.setPreferredSize(new java.awt.Dimension(56, 10));
         jToolBar1.add(jComboBox1);
         jToolBar1.add(jSeparator10);
@@ -230,6 +357,42 @@ public class Panel extends javax.swing.JFrame {
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton6);
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-expand-arrow-16.png"))); // NOI18N
+        jButton7.setToolTipText("Comprobar archivo");
+        jButton7.setFocusable(false);
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton7);
+
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-double-down-16.png"))); // NOI18N
+        jButton8.setToolTipText("Validar archivo");
+        jButton8.setFocusable(false);
+        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton8);
+        jToolBar1.add(jSeparator17);
+
+        jTextField1.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField1.setText("Buscar (Ctrl+F)");
+        jTextField1.setLocation(new java.awt.Point(0, 0));
+        jTextField1.setMargin(new java.awt.Insets(0, 500, 0, 0));
+        jTextField1.setMaximumSize(new java.awt.Dimension(200, 2147483647));
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jTextField1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -255,6 +418,12 @@ public class Panel extends javax.swing.JFrame {
             .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
         );
 
+        jEditorPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jEditorPane2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jEditorPane2FocusLost(evt);
+            }
+        });
         jEditorPane2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jEditorPane2MouseClicked(evt);
@@ -342,6 +511,11 @@ public class Panel extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Editar");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
 
         jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-undo-16.png"))); // NOI18N
@@ -365,18 +539,33 @@ public class Panel extends javax.swing.JFrame {
         jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-cut-16.png"))); // NOI18N
         jMenuItem11.setText("Cortar");
         jMenuItem11.setEnabled(false);
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem11);
 
         jMenuItem12.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-copy-16.png"))); // NOI18N
         jMenuItem12.setText("Copiar");
         jMenuItem12.setEnabled(false);
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem12);
 
         jMenuItem13.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-paste-16.png"))); // NOI18N
         jMenuItem13.setText("Pegar");
         jMenuItem13.setEnabled(false);
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem13);
 
         jMenuItem14.setText("Pegar con formato");
@@ -397,6 +586,11 @@ public class Panel extends javax.swing.JFrame {
 
         jMenuItem19.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem19.setText("Seleccionar todo");
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem19);
         jMenu2.add(jSeparator6);
 
@@ -480,6 +674,54 @@ public class Panel extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
+        jMenu9.setText("Reestructurar");
+
+        jMenuItem42.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem42.setText("Cambiar de nombre...");
+        jMenu9.add(jMenuItem42);
+
+        jMenuItem43.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem43.setText("Mover...");
+        jMenu9.add(jMenuItem43);
+
+        jMenuItem44.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem44.setText("Copiar...");
+        jMenu9.add(jMenuItem44);
+
+        jMenuItem45.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem45.setText("Eliminación segura...");
+        jMenu9.add(jMenuItem45);
+        jMenu9.add(jSeparator15);
+
+        jMenuItem46.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_UP, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem46.setText("Ascender...");
+        jMenu9.add(jMenuItem46);
+
+        jMenuItem47.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DOWN, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem47.setText("Descender...");
+        jMenu9.add(jMenuItem47);
+        jMenu9.add(jSeparator16);
+
+        jMenu11.setText("Introducir");
+
+        jMenuItem48.setText("Introducir <PARAM>");
+        jMenuItem48.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem48ActionPerformed(evt);
+            }
+        });
+        jMenu11.add(jMenuItem48);
+
+        jMenuItem49.setText("Introducir <CONST>");
+        jMenu11.add(jMenuItem49);
+
+        jMenuItem50.setText("Introducir <DATABASE>");
+        jMenu11.add(jMenuItem50);
+
+        jMenu9.add(jMenu11);
+
+        jMenuBar1.add(jMenu9);
+
         jMenu6.setText("Ejecutar");
 
         jMenuItem30.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
@@ -490,8 +732,232 @@ public class Panel extends javax.swing.JFrame {
         jMenuItem31.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem31.setText("Probar archivo");
         jMenu6.add(jMenuItem31);
+        jMenu6.add(jSeparator12);
+
+        jMenu7.setText("Establecer la configuración del proyecto");
+
+        jCheckBoxMenuItem8.setSelected(true);
+        jCheckBoxMenuItem8.setText("<default_config>");
+        jMenu7.add(jCheckBoxMenuItem8);
+        jMenu7.add(jSeparator13);
+
+        jMenuItem37.setText("Personalizar...");
+        jMenu7.add(jMenuItem37);
+
+        jMenu6.add(jMenu7);
+
+        jMenu8.setText("Establecer como archivo de inicio");
+
+        jMenuItem38.setText("Ninguno");
+        jMenu8.add(jMenuItem38);
+
+        jMenu6.add(jMenu8);
+        jMenu6.add(jSeparator14);
+
+        jMenuItem39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-document-16.png"))); // NOI18N
+        jMenuItem39.setText("Generar documentación");
+        jMenu6.add(jMenuItem39);
+
+        jMenuItem40.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-expand-arrow-16.png"))); // NOI18N
+        jMenuItem40.setText("Comprobar archivo");
+        jMenu6.add(jMenuItem40);
+
+        jMenuItem41.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-double-down-16.png"))); // NOI18N
+        jMenuItem41.setText("Validar archivo");
+        jMenu6.add(jMenuItem41);
 
         jMenuBar1.add(jMenu6);
+
+        jMenu12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-repository-16.png"))); // NOI18N
+
+        jMenuItem51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-show-property-16.png"))); // NOI18N
+        jMenuItem51.setText("Mostrar cambios");
+        jMenu12.add(jMenuItem51);
+
+        jMenu13.setText("Diff");
+
+        jMenuItem52.setText("Diff to HEAD");
+        jMenu13.add(jMenuItem52);
+
+        jMenuItem53.setText("Diff to Tracker");
+        jMenu13.add(jMenuItem53);
+
+        jMenuItem54.setText("Diff to Repository HEAD");
+        jMenu13.add(jMenuItem54);
+
+        jMenuItem55.setText("Diff to...");
+        jMenu13.add(jMenuItem55);
+
+        jMenu12.add(jMenu13);
+
+        jMenuItem56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-add-file-16.png"))); // NOI18N
+        jMenuItem56.setText("Añadir");
+        jMenu12.add(jMenuItem56);
+
+        jMenuItem57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-commit-git-16.png"))); // NOI18N
+        jMenuItem57.setText("Commit...");
+        jMenu12.add(jMenuItem57);
+
+        jMenu14.setText("Checkout");
+
+        jMenuItem58.setText("Checkout revisiones...");
+        jMenu14.add(jMenuItem58);
+
+        jMenuItem59.setText("Checkout archivos...");
+        jMenuItem59.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem59ActionPerformed(evt);
+            }
+        });
+        jMenu14.add(jMenuItem59);
+
+        jMenu12.add(jMenu14);
+
+        jMenuItem60.setText("Revertir modificaciones...");
+        jMenuItem60.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem60ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(jMenuItem60);
+
+        jMenuItem65.setText("Mostrar anotaciones");
+        jMenu12.add(jMenuItem65);
+
+        jMenuItem66.setText("Mostrar historial");
+        jMenu12.add(jMenuItem66);
+
+        jMenuItem67.setText("Resolver conflictos");
+        jMenu12.add(jMenuItem67);
+        jMenu12.add(jSeparator18);
+
+        jMenu17.setText("Ignore");
+
+        jMenuItem68.setText("Exclude from Commit");
+        jMenu17.add(jMenuItem68);
+
+        jMenu12.add(jMenu17);
+
+        jMenu18.setText("Patches");
+
+        jMenuItem69.setText("Exportar cambios no commiteados...");
+        jMenu18.add(jMenuItem69);
+
+        jMenuItem70.setText("Exportar commits...");
+        jMenu18.add(jMenuItem70);
+        jMenu18.add(jSeparator19);
+
+        jMenuItem71.setText("Aplicar parche de Diff...");
+        jMenu18.add(jMenuItem71);
+
+        jMenu12.add(jMenu18);
+        jMenu12.add(jSeparator20);
+
+        jMenu19.setText("Branch/Tag");
+
+        jMenuItem72.setText("Crear branch...");
+        jMenuItem72.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem72ActionPerformed(evt);
+            }
+        });
+        jMenu19.add(jMenuItem72);
+
+        jMenuItem73.setText("Cambiar de branch...");
+        jMenu19.add(jMenuItem73);
+
+        jMenuItem74.setText("Set tracker branch...");
+        jMenu19.add(jMenuItem74);
+        jMenu19.add(jSeparator21);
+
+        jMenuItem75.setText("Crear tag...");
+        jMenu19.add(jMenuItem75);
+
+        jMenuItem76.setText("Administrar tag...");
+        jMenuItem76.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem76ActionPerformed(evt);
+            }
+        });
+        jMenu19.add(jMenuItem76);
+        jMenu19.add(jSeparator22);
+
+        jMenuItem77.setText("Merge revision...");
+        jMenu19.add(jMenuItem77);
+
+        jMenuItem78.setText("Rebase...");
+        jMenu19.add(jMenuItem78);
+
+        jMenuItem80.setText("Cherry pick...");
+        jMenu19.add(jMenuItem80);
+
+        jMenu12.add(jMenu19);
+
+        jMenu20.setText("Remote");
+
+        jMenuItem81.setText("Clonar...");
+        jMenu20.add(jMenuItem81);
+        jMenu20.add(jSeparator23);
+
+        jMenuItem82.setText("Fetch from Upstream");
+        jMenu20.add(jMenuItem82);
+
+        jMenuItem84.setText("Fetch...");
+        jMenu20.add(jMenuItem84);
+
+        jMenuItem85.setText("Pull from Upstream");
+        jMenu20.add(jMenuItem85);
+
+        jMenuItem86.setText("Pull...");
+        jMenu20.add(jMenuItem86);
+        jMenu20.add(jSeparator24);
+
+        jMenuItem87.setText("Push from Upstream");
+        jMenu20.add(jMenuItem87);
+
+        jMenuItem88.setText("Push...");
+        jMenu20.add(jMenuItem88);
+        jMenu20.add(jSeparator25);
+
+        jMenuItem89.setText("Show Incomming");
+        jMenu20.add(jMenuItem89);
+
+        jMenuItem90.setText("Show Outcomming");
+        jMenuItem90.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem90ActionPerformed(evt);
+            }
+        });
+        jMenu20.add(jMenuItem90);
+        jMenu20.add(jSeparator26);
+
+        jMenuItem91.setText("Show Incomming from selection");
+        jMenu20.add(jMenuItem91);
+
+        jMenuItem92.setText("Show Outcomming from selection");
+        jMenu20.add(jMenuItem92);
+
+        jMenu12.add(jMenu20);
+
+        jMenu21.setText("Revert/Recover");
+        jMenu12.add(jMenu21);
+
+        jMenuBar1.add(jMenu12);
+
+        jMenu15.setText("Ayuda");
+
+        jMenuItem61.setText("Ayuda Contenidos");
+        jMenu15.add(jMenuItem61);
+
+        jMenuItem62.setText("Documentación en línea");
+        jMenu15.add(jMenuItem62);
+
+        jMenuItem63.setText("Métodos abreviados de teclado");
+        jMenu15.add(jMenuItem63);
+
+        jMenuBar1.add(jMenu15);
 
         setJMenuBar(jMenuBar1);
 
@@ -572,6 +1038,7 @@ public class Panel extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
 
+
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         XMLEditorKit xmlEditorKit = new XMLEditorKit();
@@ -579,15 +1046,40 @@ public class Panel extends javax.swing.JFrame {
         xmlEditorKit.setTagCompletion(true);
         xmlEditorKit.setStyle(XMLStyleConstants.ELEMENT_NAME, Color.magenta, NORMAL);
         xmlEditorKit.setStyle( XMLStyleConstants.CDATA, new Color(0, 0, 0), Font.ITALIC);
-
         jEditorPane2.setEditorKitForContentType("text/xml", xmlEditorKit);
         jEditorPane2.setContentType("text/xml");
+        //jEditorPane2.addAncestorListener(new DocumentListener() {});
         Document doc = jEditorPane2.getDocument();
         doc.putProperty(PlainDocument.tabSizeAttribute, 2);
         jEditorPane2.setFont( new Font( "Sans Serif", Font.PLAIN, 12));
         jEditorPane2.setText("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
-                + "<DBSCRIPT id=\"\" author=\"" + System.getProperty("user.name") + "\" date=\"" + sdf.format(calendar.getTime()) + "\" desc=\"Script creado automáticamente con DBScript Maker v1.0\">\n\t<DATABASE id=\"ORACLEDB\" type=\"mysql\" database=\"sd_5_caren\" />\n</DBSCRIPT>");
+                + "<DBSCRIPT id=\"\" author=\"" + System.getProperty("user.name") + "\" date=\"" + sdf.format(calendar.getTime()) + "\" desc=\"Script creado automáticamente con DBScript Maker v1.0\">\n\t<DATABASE id=\"ORACLEDB\" type=\"mysql\" database=\"sd_5_caren\" />\n</DBSCRIPT><!--Hola mundo Java -->");
+        XMLInside xml = new XMLInside("schema_sd5.xml");
+        xml.setAutor("Guillermo Vallespir Wood");
+        xml.setComentario("Archivo que implementa el esquema de datos en la base de datos.");
+        xml.setUml("");
+
+        ObjectOutputStream out = null;
+        ByteArrayOutputStream baos = null;
+        String xmlout = "";
+        try {
+            baos = new ByteArrayOutputStream();
+            out = new ObjectOutputStream(baos);
+            out.writeObject(xml);
+        } catch (IOException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                out.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
+        String a1 = jEditorPane2.getText().substring(0, jEditorPane2.getText().indexOf("</DBSCRIPT>"));
+        String a2 = jEditorPane2.getText().substring(jEditorPane2.getText().indexOf("</DBSCRIPT>"));
+        
+        jEditorPane2.setText(a1+ "\n\n\n\t<DBSCRIPTMAKER_DATA><![CDATA[\n" + Base64.getEncoder().encodeToString(baos.toByteArray()) + "\n]]>\n\t</DBSCRIPTMAKER_DATA>\n" + a2);
     }//GEN-LAST:event_formWindowActivated
 
 
@@ -615,7 +1107,129 @@ public class Panel extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jEditorPane2MouseClicked
 
+    private void jMenuItem48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem48ActionPerformed
+        introducirParam();
+    }//GEN-LAST:event_jMenuItem48ActionPerformed
 
+    private void jMenuItem59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem59ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem59ActionPerformed
+
+    private void jMenuItem60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem60ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem60ActionPerformed
+
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+        jEditorPane2.selectAll();
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jEditorPane2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jEditorPane2FocusLost
+        if(jEditorPane2.getSelectedText() != null){
+            jMenuItem11.setEnabled(true);
+            jMenuItem12.setEnabled(true);
+        }else{
+            jMenuItem11.setEnabled(false);
+            jMenuItem12.setEnabled(false);
+        }
+        
+        if(!cortado.equals("")){
+            jMenuItem13.setEnabled(true);
+        }else
+            jMenuItem13.setEnabled(false);
+    }//GEN-LAST:event_jEditorPane2FocusLost
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        cortar();
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        if(jTextField1.getText().equals("Buscar (Ctrl+F)")){
+            jTextField1.setText("");
+        }
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        if(jTextField1.getText().equals("")){
+            jTextField1.setText("Buscar (Ctrl+F)");
+        }
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        pegar();
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        copiar();
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem34ActionPerformed
+        cortar();
+    }//GEN-LAST:event_jMenuItem34ActionPerformed
+
+    private void jMenuItem35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem35ActionPerformed
+        copiar();
+    }//GEN-LAST:event_jMenuItem35ActionPerformed
+
+    private void jMenuItem36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem36ActionPerformed
+        pegar();
+    }//GEN-LAST:event_jMenuItem36ActionPerformed
+
+    private void jMenuItem72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem72ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem72ActionPerformed
+
+    private void jMenuItem76ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem76ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem76ActionPerformed
+
+    private void jMenuItem90ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem90ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem90ActionPerformed
+
+    private void cortar(){
+        cortado = jEditorPane2.getSelectedText();
+        jEditorPane2.replaceSelection("");
+        
+    }
+    
+    private void pegar(){
+        if(jEditorPane2.getSelectedText() != null){
+            jEditorPane2.replaceSelection(cortado);
+        }else{
+            try {
+                jEditorPane2.getDocument().insertString(jEditorPane2.getCaretPosition(), cortado, null);
+            } catch (BadLocationException ex) {
+                Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    private void copiar(){
+        cortado = jEditorPane2.getSelectedText();
+    }
+    
+    private void introducirParam(){
+        introducirParam panel = new introducirParam();
+        JDialog dialog = new JDialog(Panel.this, "Introducir <PARAM>", true);
+        dialog.getContentPane().add(panel);
+        dialog.setModal(true);
+        dialog.setResizable(false);
+        dialog.pack();
+        dialog.setVisible(true);
+        try {
+            jEditorPane2.getDocument().insertString(jEditorPane2.getCaretPosition(), "<PARAM id=\"[ID_DEL_PARAMETRO]\" value=\"[VALOR]\" />", null);
+        } catch (BadLocationException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 
     /**
@@ -653,6 +1267,14 @@ public class Panel extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void add(String text){
+        try {
+            jEditorPane2.getDocument().insertString(jEditorPane2.getCaretPosition(), text, null);
+        } catch (BadLocationException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -661,6 +1283,8 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
@@ -668,16 +1292,31 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem6;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem7;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem8;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JEditorPane jEditorPane2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenu jMenu13;
+    private javax.swing.JMenu jMenu14;
+    private javax.swing.JMenu jMenu15;
+    private javax.swing.JMenu jMenu16;
+    private javax.swing.JMenu jMenu17;
+    private javax.swing.JMenu jMenu18;
+    private javax.swing.JMenu jMenu19;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu20;
+    private javax.swing.JMenu jMenu21;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -709,12 +1348,68 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem34;
     private javax.swing.JMenuItem jMenuItem35;
     private javax.swing.JMenuItem jMenuItem36;
+    private javax.swing.JMenuItem jMenuItem37;
+    private javax.swing.JMenuItem jMenuItem38;
+    private javax.swing.JMenuItem jMenuItem39;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem40;
+    private javax.swing.JMenuItem jMenuItem41;
+    private javax.swing.JMenuItem jMenuItem42;
+    private javax.swing.JMenuItem jMenuItem43;
+    private javax.swing.JMenuItem jMenuItem44;
+    private javax.swing.JMenuItem jMenuItem45;
+    private javax.swing.JMenuItem jMenuItem46;
+    private javax.swing.JMenuItem jMenuItem47;
+    private javax.swing.JMenuItem jMenuItem48;
+    private javax.swing.JMenuItem jMenuItem49;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem50;
+    private javax.swing.JMenuItem jMenuItem51;
+    private javax.swing.JMenuItem jMenuItem52;
+    private javax.swing.JMenuItem jMenuItem53;
+    private javax.swing.JMenuItem jMenuItem54;
+    private javax.swing.JMenuItem jMenuItem55;
+    private javax.swing.JMenuItem jMenuItem56;
+    private javax.swing.JMenuItem jMenuItem57;
+    private javax.swing.JMenuItem jMenuItem58;
+    private javax.swing.JMenuItem jMenuItem59;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem60;
+    private javax.swing.JMenuItem jMenuItem61;
+    private javax.swing.JMenuItem jMenuItem62;
+    private javax.swing.JMenuItem jMenuItem63;
+    private javax.swing.JMenuItem jMenuItem64;
+    private javax.swing.JMenuItem jMenuItem65;
+    private javax.swing.JMenuItem jMenuItem66;
+    private javax.swing.JMenuItem jMenuItem67;
+    private javax.swing.JMenuItem jMenuItem68;
+    private javax.swing.JMenuItem jMenuItem69;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem70;
+    private javax.swing.JMenuItem jMenuItem71;
+    private javax.swing.JMenuItem jMenuItem72;
+    private javax.swing.JMenuItem jMenuItem73;
+    private javax.swing.JMenuItem jMenuItem74;
+    private javax.swing.JMenuItem jMenuItem75;
+    private javax.swing.JMenuItem jMenuItem76;
+    private javax.swing.JMenuItem jMenuItem77;
+    private javax.swing.JMenuItem jMenuItem78;
+    private javax.swing.JMenuItem jMenuItem79;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem80;
+    private javax.swing.JMenuItem jMenuItem81;
+    private javax.swing.JMenuItem jMenuItem82;
+    private javax.swing.JMenuItem jMenuItem83;
+    private javax.swing.JMenuItem jMenuItem84;
+    private javax.swing.JMenuItem jMenuItem85;
+    private javax.swing.JMenuItem jMenuItem86;
+    private javax.swing.JMenuItem jMenuItem87;
+    private javax.swing.JMenuItem jMenuItem88;
+    private javax.swing.JMenuItem jMenuItem89;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItem90;
+    private javax.swing.JMenuItem jMenuItem91;
+    private javax.swing.JMenuItem jMenuItem92;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -723,7 +1418,22 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator10;
     private javax.swing.JPopupMenu.Separator jSeparator11;
+    private javax.swing.JPopupMenu.Separator jSeparator12;
+    private javax.swing.JPopupMenu.Separator jSeparator13;
+    private javax.swing.JPopupMenu.Separator jSeparator14;
+    private javax.swing.JPopupMenu.Separator jSeparator15;
+    private javax.swing.JPopupMenu.Separator jSeparator16;
+    private javax.swing.JToolBar.Separator jSeparator17;
+    private javax.swing.JPopupMenu.Separator jSeparator18;
+    private javax.swing.JPopupMenu.Separator jSeparator19;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator20;
+    private javax.swing.JPopupMenu.Separator jSeparator21;
+    private javax.swing.JPopupMenu.Separator jSeparator22;
+    private javax.swing.JPopupMenu.Separator jSeparator23;
+    private javax.swing.JPopupMenu.Separator jSeparator24;
+    private javax.swing.JPopupMenu.Separator jSeparator25;
+    private javax.swing.JPopupMenu.Separator jSeparator26;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
@@ -732,6 +1442,7 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator8;
     private javax.swing.JToolBar.Separator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
