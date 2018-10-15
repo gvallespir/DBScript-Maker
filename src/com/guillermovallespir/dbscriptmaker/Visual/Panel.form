@@ -42,6 +42,11 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
+        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem96">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ver documentaci&#xf3;n de"/>
+          </Properties>
+        </MenuItem>
         <Menu class="javax.swing.JMenu" name="jMenu10">
           <Properties>
             <Property name="text" type="java.lang.String" value="Navegar"/>
@@ -63,6 +68,9 @@
         </Component>
         <MenuItem class="javax.swing.JMenuItem" name="jMenuItem34">
           <Properties>
+            <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+              <KeyStroke key="Ctrl+X"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-cut-16.png"/>
             </Property>
@@ -75,6 +83,9 @@
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jMenuItem35">
           <Properties>
+            <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+              <KeyStroke key="Ctrl+C"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-copy-16.png"/>
             </Property>
@@ -86,6 +97,9 @@
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jMenuItem36">
           <Properties>
+            <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+              <KeyStroke key="Ctrl+V"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-paste-16.png"/>
             </Property>
@@ -95,6 +109,48 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem36ActionPerformed"/>
           </Events>
         </MenuItem>
+        <Component class="javax.swing.JPopupMenu$Separator" name="jSeparator27">
+        </Component>
+        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem93">
+          <Properties>
+            <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+              <KeyStroke key="F6"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-next-16.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ejecutar archivo"/>
+          </Properties>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem94">
+          <Properties>
+            <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+              <KeyStroke key="Ctrl+F9"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-expand-arrow-16.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Comprobar archivo"/>
+          </Properties>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem95">
+          <Properties>
+            <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+              <KeyStroke key="Shift+Ctrl+F9"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-double-down-16.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Validar archivo"/>
+          </Properties>
+        </MenuItem>
+        <Component class="javax.swing.JPopupMenu$Separator" name="jSeparator28">
+        </Component>
+        <Menu class="javax.swing.JMenu" name="jMenu22">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Introducir"/>
+          </Properties>
+        </Menu>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JMenuItem" name="jMenuItem64">
@@ -1150,6 +1206,9 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton8">
           <Properties>
@@ -1239,6 +1298,9 @@
       <SubComponents>
         <Component class="javax.swing.JEditorPane" name="jEditorPane2">
           <Properties>
+            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="jPopupMenu1"/>
+            </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor de Texto"/>
             </Property>

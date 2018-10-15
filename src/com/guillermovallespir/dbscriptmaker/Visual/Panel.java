@@ -7,29 +7,28 @@ package com.guillermovallespir.dbscriptmaker.Visual;
 
 import com.guillermovallespir.dbscriptmaker.Clases.XMLInside;
 import java.awt.Color;
-import java.awt.Dialog;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.InputMap;
-import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
-import org.apache.commons.lang3.text.WordUtils;
 import org.bounce.text.xml.XMLEditorKit;
 import org.bounce.text.xml.XMLStyleConstants;
 import org.jfree.ui.WizardDialog;
@@ -66,6 +65,7 @@ public class Panel extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem96 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem32 = new javax.swing.JMenuItem();
         jMenuItem33 = new javax.swing.JMenuItem();
@@ -73,6 +73,12 @@ public class Panel extends javax.swing.JFrame {
         jMenuItem34 = new javax.swing.JMenuItem();
         jMenuItem35 = new javax.swing.JMenuItem();
         jMenuItem36 = new javax.swing.JMenuItem();
+        jSeparator27 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem93 = new javax.swing.JMenuItem();
+        jMenuItem94 = new javax.swing.JMenuItem();
+        jMenuItem95 = new javax.swing.JMenuItem();
+        jSeparator28 = new javax.swing.JPopupMenu.Separator();
+        jMenu22 = new javax.swing.JMenu();
         jMenuItem64 = new javax.swing.JMenuItem();
         jMenu16 = new javax.swing.JMenu();
         jMenuItem79 = new javax.swing.JMenuItem();
@@ -237,6 +243,9 @@ public class Panel extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jEditorPane1);
 
+        jMenuItem96.setText("Ver documentación de");
+        jPopupMenu1.add(jMenuItem96);
+
         jMenu10.setText("Navegar");
 
         jMenuItem32.setText("Ir al código");
@@ -248,6 +257,7 @@ public class Panel extends javax.swing.JFrame {
         jPopupMenu1.add(jMenu10);
         jPopupMenu1.add(jSeparator11);
 
+        jMenuItem34.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-cut-16.png"))); // NOI18N
         jMenuItem34.setText("Cortar");
         jMenuItem34.setToolTipText("");
@@ -258,6 +268,7 @@ public class Panel extends javax.swing.JFrame {
         });
         jPopupMenu1.add(jMenuItem34);
 
+        jMenuItem35.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-copy-16.png"))); // NOI18N
         jMenuItem35.setText("Copiar");
         jMenuItem35.addActionListener(new java.awt.event.ActionListener() {
@@ -267,6 +278,7 @@ public class Panel extends javax.swing.JFrame {
         });
         jPopupMenu1.add(jMenuItem35);
 
+        jMenuItem36.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-paste-16.png"))); // NOI18N
         jMenuItem36.setText("Pegar");
         jMenuItem36.addActionListener(new java.awt.event.ActionListener() {
@@ -275,6 +287,26 @@ public class Panel extends javax.swing.JFrame {
             }
         });
         jPopupMenu1.add(jMenuItem36);
+        jPopupMenu1.add(jSeparator27);
+
+        jMenuItem93.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        jMenuItem93.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-next-16.png"))); // NOI18N
+        jMenuItem93.setText("Ejecutar archivo");
+        jPopupMenu1.add(jMenuItem93);
+
+        jMenuItem94.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem94.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-expand-arrow-16.png"))); // NOI18N
+        jMenuItem94.setText("Comprobar archivo");
+        jPopupMenu1.add(jMenuItem94);
+
+        jMenuItem95.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem95.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-double-down-16.png"))); // NOI18N
+        jMenuItem95.setText("Validar archivo");
+        jPopupMenu1.add(jMenuItem95);
+        jPopupMenu1.add(jSeparator28);
+
+        jMenu22.setText("Introducir");
+        jPopupMenu1.add(jMenu22);
 
         jMenuItem64.setText("jMenuItem64");
 
@@ -363,6 +395,11 @@ public class Panel extends javax.swing.JFrame {
         jButton7.setFocusable(false);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton7);
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guillermovallespir/dbscriptmaker/Visual/Iconos/icons8-double-down-16.png"))); // NOI18N
@@ -418,6 +455,7 @@ public class Panel extends javax.swing.JFrame {
             .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
         );
 
+        jEditorPane2.setComponentPopupMenu(jPopupMenu1);
         jEditorPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jEditorPane2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -1029,7 +1067,12 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem20ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        JOptionPane.showMessageDialog(this, "Estás saliendo de DBScript Maker sin guardar tus cambios.\n¿Estás seguro que quieres salir sin guardar?", "¿Estás seguro que quieres salir?", JOptionPane.WARNING_MESSAGE);
+        String[] options = {"Salir", "Cancelar"};
+        int respuesta = JOptionPane.showOptionDialog(null, "Estás saliendo de DBScript Maker sin guardar tus cambios.\n¿Estás seguro que quieres salir sin guardar?", "¿Estás seguro que quieres salir?", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        
+        if(respuesta == 0){
+            System.exit(0);
+        }
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem25ActionPerformed
@@ -1037,7 +1080,7 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem25ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-
+        jMenuItem96.setVisible(false);
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
@@ -1048,6 +1091,52 @@ public class Panel extends javax.swing.JFrame {
         xmlEditorKit.setStyle( XMLStyleConstants.CDATA, new Color(0, 0, 0), Font.ITALIC);
         jEditorPane2.setEditorKitForContentType("text/xml", xmlEditorKit);
         jEditorPane2.setContentType("text/xml");
+        jEditorPane2.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    
+                    if(jEditorPane2.getSelectedText() != null){
+                        switch(jEditorPane2.getSelectedText().trim()){
+                            case "DATABASE":
+                            case "<DATABASE":
+                            case "<DATABASE>":
+                            case "DATABASE>":
+                            case "/DATABASE":
+                            case "</DATABASE":
+                            case "</DATABASE>":
+                                jMenuItem96.setText("Ir a la documentación de <DATABASE>...");
+                                jMenuItem96.setVisible(true);
+                                break;
+                            case "DBSCRIPT":
+                            case "<DBSCRIPT":
+                            case "<DBSCRIPT>":
+                            case "DBSCRIPT>":
+                            case "/DBSCRIPT":
+                            case "</DBSCRIPT":
+                            case "</DBSCRIPT>":
+                                jMenuItem96.setText("Ir a la documentación de <DBSCRIPT>...");
+                                jMenuItem96.setVisible(true);
+                                break;
+                            case "DBSCRIPTMAKER_DATA":
+                            case "<DBSCRIPTMAKER_DATA":
+                            case "<DBSCRIPTMAKER_DATA>":
+                            case "DBSCRIPTMAKER_DATA>":
+                            case "/DBSCRIPTMAKER_DATA":
+                            case "</DBSCRIPTMAKER_DATA":
+                            case "</DBSCRIPTMAKER_DATA>":
+                                jMenuItem96.setText("Ir a la documentación de <DBSCRIPTMAKER_DATA>...");
+                                jMenuItem96.setVisible(true);
+                                break;
+                            default:
+                                jMenuItem96.setVisible(false);
+                        }
+                    }else{
+                        jMenuItem96.setVisible(false);
+                    }
+                }
+            }
+        });
         //jEditorPane2.addAncestorListener(new DocumentListener() {});
         Document doc = jEditorPane2.getDocument();
         doc.putProperty(PlainDocument.tabSizeAttribute, 2);
@@ -1101,9 +1190,7 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jEditorPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEditorPane2MouseClicked
-        if(SwingUtilities.isRightMouseButton(evt)){
-            jPopupMenu1.show(this, evt.getX(), evt.getY() + 60);
-        }
+        
 
     }//GEN-LAST:event_jEditorPane2MouseClicked
 
@@ -1194,6 +1281,40 @@ public class Panel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem90ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // Se comprobará el archivo
+        String data = jEditorPane2.getText().substring(jEditorPane2.getText().indexOf("<DBSCRIPTMAKER_DATA><![CDATA[") + 29);
+        data = data.substring(0, data.indexOf("]]>\n\t</DBSCRIPTMAKER_DATA>"));
+        data.replaceAll("\n", "");
+        data.replaceAll("\t", "");
+        data = data.trim();
+        byte[] data2 = Base64.getDecoder().decode(data);
+        XMLInside inside = null;
+        
+        ObjectInputStream in = null;
+        ByteArrayInputStream baos = null;
+        String xmlout = "";
+        try {
+            baos = new ByteArrayInputStream(data2);
+            in = new ObjectInputStream(baos);
+            inside = (XMLInside) in.readObject();
+        } catch (IOException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                in.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        
+        System.out.println(inside.getAutor());
+        System.out.println(inside.getNombre_archivo());
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     private void cortar(){
         cortado = jEditorPane2.getSelectedText();
         jEditorPane2.replaceSelection("");
@@ -1219,6 +1340,8 @@ public class Panel extends javax.swing.JFrame {
     private void introducirParam(){
         introducirParam panel = new introducirParam();
         JDialog dialog = new JDialog(Panel.this, "Introducir <PARAM>", true);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        dialog.setLocation(dim.width/2-dialog.getSize().width/2, dim.height/2-dialog.getSize().height/2);
         dialog.getContentPane().add(panel);
         dialog.setModal(true);
         dialog.setResizable(false);
@@ -1310,6 +1433,7 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu20;
     private javax.swing.JMenu jMenu21;
+    private javax.swing.JMenu jMenu22;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -1410,6 +1534,10 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem90;
     private javax.swing.JMenuItem jMenuItem91;
     private javax.swing.JMenuItem jMenuItem92;
+    private javax.swing.JMenuItem jMenuItem93;
+    private javax.swing.JMenuItem jMenuItem94;
+    private javax.swing.JMenuItem jMenuItem95;
+    private javax.swing.JMenuItem jMenuItem96;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -1434,6 +1562,8 @@ public class Panel extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator24;
     private javax.swing.JPopupMenu.Separator jSeparator25;
     private javax.swing.JPopupMenu.Separator jSeparator26;
+    private javax.swing.JPopupMenu.Separator jSeparator27;
+    private javax.swing.JPopupMenu.Separator jSeparator28;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
