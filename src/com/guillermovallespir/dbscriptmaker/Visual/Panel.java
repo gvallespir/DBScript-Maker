@@ -413,7 +413,6 @@ public class Panel extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
         jTextField1.setText("Buscar (Ctrl+F)");
-        jTextField1.setLocation(new java.awt.Point(0, 0));
         jTextField1.setMargin(new java.awt.Insets(0, 500, 0, 0));
         jTextField1.setMaximumSize(new java.awt.Dimension(200, 2147483647));
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -1339,19 +1338,8 @@ public class Panel extends javax.swing.JFrame {
     
     private void introducirParam(){
         introducirParam panel = new introducirParam();
-        JDialog dialog = new JDialog(Panel.this, "Introducir <PARAM>", true);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        dialog.setLocation(dim.width/2-dialog.getSize().width/2, dim.height/2-dialog.getSize().height/2);
-        dialog.getContentPane().add(panel);
-        dialog.setModal(true);
-        dialog.setResizable(false);
-        dialog.pack();
-        dialog.setVisible(true);
-        try {
-            jEditorPane2.getDocument().insertString(jEditorPane2.getCaretPosition(), "<PARAM id=\"[ID_DEL_PARAMETRO]\" value=\"[VALOR]\" />", null);
-        } catch (BadLocationException ex) {
-            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        panel.pack();
+        panel.setVisible(true);
     }
     
 
